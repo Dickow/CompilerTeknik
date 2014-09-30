@@ -6,6 +6,7 @@ import java.util.List;
 import org.antlr.v4.runtime.Token;
 
 import compiler.Frontend.*;
+import compiler.Frontend.MiniJavaParser.IdentifierContext;
 
 public class IRbuilder extends MiniJavaBaseVisitor<IR> {
 	
@@ -383,7 +384,7 @@ public class IRbuilder extends MiniJavaBaseVisitor<IR> {
 //	idIDENT : name=IDENT ;
 
 	public MJIdentifier visitIdentifier(MiniJavaParser.IdentifierContext ctx) { 
-		MJIdentifier id = visitId(ctx.id()); 
+		MJIdentifier id = (MJIdentifier) visitId(ctx.id()); 
 		
 		for (Token t : ctx.selectors) {
 			MJIdentifier selector = new MJIdentifier(t.getText());
@@ -394,7 +395,7 @@ public class IRbuilder extends MiniJavaBaseVisitor<IR> {
 		return id;
 	}
 	
-	public MJIdentifier visitId(MiniJavaParser.IdContext ctx) { return (MJIdentifier)visitChildren(ctx); }
+	public MJIdentifier visitId(IdentifierContext lhs) { return (MJIdentifier)visitChildren(lhs); }
 	
 	public MJIdentifier visitIdThis(MiniJavaParser.IdThisContext ctx) { return new MJIdentifier("this"); }
 	
