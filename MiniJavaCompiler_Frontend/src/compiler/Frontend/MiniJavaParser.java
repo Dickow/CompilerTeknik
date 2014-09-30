@@ -1,5 +1,5 @@
 // Generated from C:\Users\Dickow\Google Drive\3.Semester\CompilerTeknik\Grammatik\MiniJava.g4 by ANTLR 4.1
- package compiler.Frontend;
+package compiler.Frontend;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -1079,6 +1079,9 @@ public class MiniJavaParser extends Parser {
 	}
 
 	public static class StatementIfContext extends ParserRuleContext {
+		public ExpressionContext condition;
+		public BlockContext ifblock;
+		public BlockContext elseblock;
 		public BlockContext block(int i) {
 			return getRuleContext(BlockContext.class,i);
 		}
@@ -1116,15 +1119,15 @@ public class MiniJavaParser extends Parser {
 			{
 			setState(221); match(14);
 			setState(222); match(16);
-			setState(223); expression();
+			setState(223); ((StatementIfContext)_localctx).condition = expression();
 			setState(224); match(34);
-			setState(225); block();
+			setState(225); ((StatementIfContext)_localctx).ifblock = block();
 			setState(228);
 			_la = _input.LA(1);
 			if (_la==33) {
 				{
 				setState(226); match(33);
-				setState(227); block();
+				setState(227); ((StatementIfContext)_localctx).elseblock = block();
 				}
 			}
 
@@ -1142,6 +1145,8 @@ public class MiniJavaParser extends Parser {
 	}
 
 	public static class StatementWhileContext extends ParserRuleContext {
+		public ExpressionContext condition;
+		public StatementContext whilestatement;
 		public StatementContext statement() {
 			return getRuleContext(StatementContext.class,0);
 		}
@@ -1175,9 +1180,9 @@ public class MiniJavaParser extends Parser {
 			{
 			setState(230); match(6);
 			setState(231); match(16);
-			setState(232); expression();
+			setState(232); ((StatementWhileContext)_localctx).condition = expression();
 			setState(233); match(34);
-			setState(234); statement();
+			setState(234); ((StatementWhileContext)_localctx).whilestatement = statement();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1243,6 +1248,8 @@ public class MiniJavaParser extends Parser {
 	}
 
 	public static class StatementArrayAssignmentContext extends ParserRuleContext {
+		public ExpressionContext arrayexpression;
+		public ExpressionContext identifierExpression;
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
@@ -1279,10 +1286,10 @@ public class MiniJavaParser extends Parser {
 			{
 			setState(241); identifier();
 			setState(242); match(25);
-			setState(243); expression();
+			setState(243); ((StatementArrayAssignmentContext)_localctx).arrayexpression = expression();
 			setState(244); match(29);
 			setState(245); match(11);
-			setState(246); expression();
+			setState(246); ((StatementArrayAssignmentContext)_localctx).identifierExpression = expression();
 			setState(247); match(7);
 			}
 		}
@@ -1346,6 +1353,7 @@ public class MiniJavaParser extends Parser {
 	}
 
 	public static class StatementPrintContext extends ParserRuleContext {
+		public ExpressionContext argument;
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -1376,7 +1384,7 @@ public class MiniJavaParser extends Parser {
 			{
 			setState(255); match(17);
 			setState(256); match(16);
-			setState(257); expression();
+			setState(257); ((StatementPrintContext)_localctx).argument = expression();
 			setState(258); match(34);
 			setState(259); match(7);
 			}
