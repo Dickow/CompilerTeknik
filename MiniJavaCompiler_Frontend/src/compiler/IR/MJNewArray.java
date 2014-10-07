@@ -6,8 +6,6 @@ public class MJNewArray extends MJNew {
 	
 	private MJExpression size;
 	
-	public MJNewArray(){}
-	
 	public MJNewArray(MJExpression size){
 		this.size = size;
 	}

@@ -7,7 +7,7 @@ public class MJReturn extends MJStatement {
 	private MJExpression retExp;
 
 	public MJReturn() {
-		this.retExp = new MJNoExpression();
+		this.retExp = null;
 	}
 	
 	public MJReturn(MJExpression retExp) {
@@ -17,7 +17,7 @@ public class MJReturn extends MJStatement {
 	public void prettyPrint(PrettyPrinter prepri) {
 		prepri.print("return");
 
-		if (!(this.retExp instanceof MJNoExpression)) {
+		if (!(this.retExp instanceof MJNewObjectExpression)) {
 			prepri.print(" ");
 			this.retExp.prettyPrint(prepri);
 		}

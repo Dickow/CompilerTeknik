@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 import compiler.PrettyPrinter;
 
-public class MJMethodCallStmt extends MJStatement {
+public class MJMethodCall extends MJExpression {
 
 	public void prettyPrint(PrettyPrinter prepri) {
 	}
