@@ -4,21 +4,21 @@ import compiler.PrettyPrinter;
 
 public class MJNegate extends MJUnaryOp {
 	
-	private MJExpression condition;
+	private MJExpression argument;
 
 	public MJNegate(){}
 	
-	public MJNegate(MJExpression condition){
+	public MJNegate(MJExpression argument){
 		
-		this.condition = condition;
+		this.argument = argument;
 	}
 	
 	public MJExpression getCondition(){
-		return condition;
+		return argument;
 	}
 
 	public void prettyPrint(PrettyPrinter prepri) {
 		prepri.print("!");
-		this.condition.prettyPrint(prepri);
+		this.argument.prettyPrint(prepri);
 	}
 }

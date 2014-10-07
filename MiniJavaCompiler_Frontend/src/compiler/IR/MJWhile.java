@@ -5,28 +5,28 @@ import compiler.PrettyPrinter;
 public class MJWhile extends MJStatement {
 	
 	private MJExpression condition;
-	private MJStatement statement;
+	private MJStatement WhileStatement;
 
 	public MJWhile(){}
 	
-	public MJWhile(MJExpression condition, MJStatement statement){
+	public MJWhile(MJExpression condition, MJStatement Whilestatement){
 		
 		this.condition = condition;
-		this.statement = statement;
+		this.WhileStatement = Whilestatement;
 	}
 	
 	public MJExpression getCondition(){
 		return condition;
 	}
 	public MJStatement getStatement(){
-		return statement;
+		return WhileStatement;
 	}
 
 	public void prettyPrint(PrettyPrinter prepri) {
 		prepri.print("while (");
 		this.condition.prettyPrint(prepri);
 		prepri.print(")");
-		this.statement.prettyPrint(prepri);
+		this.WhileStatement.prettyPrint(prepri);
 		
 	}
 }
