@@ -4,11 +4,25 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 import compiler.Frontend.*;
+import compiler.Frontend.MiniJavaParser.ExpressionArrayAccessContext;
+import compiler.Frontend.MiniJavaParser.ExpressionIdentifierContext;
+import compiler.Frontend.MiniJavaParser.ExpressionMethodCallContext;
+import compiler.Frontend.MiniJavaParser.ExpressionNegationContext;
+import compiler.Frontend.MiniJavaParser.ExpressionNewIntArrayContext;
+import compiler.Frontend.MiniJavaParser.ExpressionNewObjectContext;
+import compiler.Frontend.MiniJavaParser.IdContext;
 import compiler.Frontend.MiniJavaParser.IdentifierContext;
+import compiler.Frontend.MiniJavaParser.StatementArrayAssignmentContext;
+import compiler.Frontend.MiniJavaParser.StatementBlockContext;
+import compiler.Frontend.MiniJavaParser.StatementIfContext;
+import compiler.Frontend.MiniJavaParser.StatementMethodCallContext;
+import compiler.Frontend.MiniJavaParser.StatementPrintContext;
+import compiler.Frontend.MiniJavaParser.StatementWhileContext;
 
-public class IRbuilder extends MiniJavaBaseVisitor<IR> {
+public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaVisitor<IR> {
 	
 //	program
 //	  : mainClass ( classDeclaration )*
@@ -400,5 +414,84 @@ public class IRbuilder extends MiniJavaBaseVisitor<IR> {
 	public MJIdentifier visitIdThis(MiniJavaParser.IdThisContext ctx) { return new MJIdentifier("this"); }
 	
 	public MJIdentifier visitIdIDENT(MiniJavaParser.IdIDENTContext ctx) { return new MJIdentifier(ctx.name.getText()); }
+
+	
+	@Override
+	public IR visitStatementBlock(StatementBlockContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitExpressionNewObject(ExpressionNewObjectContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitId(IdContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitStatementMethodCall(StatementMethodCallContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitStatementPrint(StatementPrintContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitExpressionIdentifier(ExpressionIdentifierContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitExpressionNegation(ExpressionNegationContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitExpressionNewIntArray(ExpressionNewIntArrayContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitExpressionArrayAccess(ExpressionArrayAccessContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitStatementWhile(StatementWhileContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitStatementIf(StatementIfContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitStatementArrayAssignment(StatementArrayAssignmentContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IR visitExpressionMethodCall(ExpressionMethodCallContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
