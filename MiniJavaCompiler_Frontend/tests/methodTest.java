@@ -7,6 +7,6 @@ class testmain {
 
 class A {
 	public void test() {
-		return;
+		return();
 	}
 }

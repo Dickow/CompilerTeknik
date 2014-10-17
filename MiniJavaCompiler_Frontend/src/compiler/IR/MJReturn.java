@@ -15,13 +15,14 @@ public class MJReturn extends MJStatement {
 	}
 
 	public void prettyPrint(PrettyPrinter prepri) {
-		prepri.print("return");
+		prepri.print("return(");
 
 		if (this.retExp != null) {
 			prepri.print(" ");
 			this.retExp.prettyPrint(prepri);
+			prepri.print(" ");
 		}
 
-		prepri.println(";");
+		prepri.println(");");
 	}
 }

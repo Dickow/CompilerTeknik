@@ -68,14 +68,14 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 			variableDeclarations.add(visitVarDeclaration(c));
 		}
 
-		LinkedList<MJMethod> statements = new LinkedList<MJMethod>();
+		LinkedList<MJMethod> methods = new LinkedList<MJMethod>();
 		for (MiniJavaParser.MethodDeclarationContext c : ctx
 				.methodDeclaration()) {
-			statements.add(visitMethodDeclaration(c));
+			methods.add(visitMethodDeclaration(c));
 		}
 
 		return new MJClass(className, superClassName, variableDeclarations,
-				statements);
+				methods);
 	}
 
 	// mainClass
@@ -87,28 +87,13 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 	// '}'
 	// ;
 
-	public MJClass visitMainClass(MiniJavaParser.MainClassContext ctx) {
+	public MJMainClass visitMainClass(MiniJavaParser.MainClassContext ctx) {
 
 		String className = ctx.className.getText();
-
-		boolean isPublic = true;
-		boolean isStatic = true;
-
-		MJType returnType = MJType.getVoidType();
-		String methodName = "main";
-
-		MJType parameterType = MJType.getArrayType("String");
 		String parameterName = ctx.parameterName.getText();
-		MJVariable parameter = new MJVariable(parameterType, parameterName);
-		LinkedList<MJVariable> parameterList = new LinkedList<MJVariable>();
-		parameterList.add(parameter);
-
 		MJBlock body = visitBlock(ctx.block());
 
-		MJMethod method = new MJMethod(returnType, methodName, parameterList,
-				body, isPublic, isStatic);
-
-		return new MJClass(className, method);
+		return new MJMainClass(className, parameterName, body);
 	}
 
 	// block
@@ -220,12 +205,11 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 			statements.add(visitStatement(c));
 		}
 
-		statements.add(visitStatementReturn(ctx.statementReturn()));
+		MJReturn returnCall = visitReturn(ctx.());
 
-		MJBlock body = new MJBlock(variableDeclarations, statements);
 
 		MJMethod method = new MJMethod(returnType, methodName, parameterList,
-				body, isPublic, isStatic);
+				variableDeclarations, statements, returnCall, isPublic, isStatic);
 
 		return method;
 	}
@@ -277,8 +261,8 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 		return new MJPrintln(argument);
 	}
 
-	public MJStatement visitStatementReturn(
-			MiniJavaParser.StatementReturnContext ctx) {
+	public MJStatement visitReturn(
+			MiniJavaParser.ReturnContext ctx) {
 
 		ExpressionContext expression = ctx.argument;
 		
