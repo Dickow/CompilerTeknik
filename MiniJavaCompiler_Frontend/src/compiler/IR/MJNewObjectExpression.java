@@ -10,8 +10,12 @@ public final class MJNewObjectExpression extends MJExpression {
 		this.objectType = objectType;
 	}
 
-	// TODO
+	
 	public void prettyPrint(PrettyPrinter prepri) {
+		prepri.print("new");
+		this.objectType.prettyPrint(prepri);
+		prepri.print("( )");
+		
 	}
 
 	public MJType getObjectType() {
