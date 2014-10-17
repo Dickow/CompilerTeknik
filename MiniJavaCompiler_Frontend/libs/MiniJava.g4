@@ -76,7 +76,6 @@ statement
   | statementPrintln
   | statementPrint
   | statementMethodCall
-  | statementReturn
   ;
   
 statementBlock              : block;
@@ -87,7 +86,8 @@ statementArrayAssignment    : identifier '[' arrayexpression = expression ']' '=
 statementPrintln            : 'System.out.println' '(' argument=expression ')' ';' ; // New
 statementPrint              : 'System.out.print' '(' argument = expression ')' ';'; // New
 statementMethodCall         : expressionMethodCall;  // New
-statementReturn             : 'return' ('(' argument=expression ')' )? ';' ; // New
+
+return             : 'return' '(' (argument=expression)? ')' ';' ; // New
 
 expression
   : head=level1 ( '&&' tail+=level1 )*
