@@ -19,7 +19,12 @@ public class MJArrayAssign extends MJStatement {
 	
 	
 	public void prettyPrint(PrettyPrinter prepri) {
-		// TODO Auto-generated method stub
+		this.identifier.prettyPrint(prepri);
+		prepri.print("[");
+		this.arrayExpression.prettyPrint(prepri);
+		prepri.print("] = " );
+		this.identifierExpression.prettyPrint(prepri);
+		prepri.print(";");
 		
 	}
 
