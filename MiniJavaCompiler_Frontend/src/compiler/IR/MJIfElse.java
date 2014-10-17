@@ -2,13 +2,11 @@ package compiler.IR;
 
 import compiler.PrettyPrinter;
 
-public class MJIfElse extends MJIf {
+public class MJIfElse extends MJStatement {
 	
 	private MJExpression condition; 
 	private MJBlock ifblock; 
 	private MJBlock elseblock; 
-	
-	public MJIfElse(){}
 	
 	public MJIfElse(MJExpression condition, MJBlock ifblock, MJBlock elseblock){
 		this.condition = condition; 

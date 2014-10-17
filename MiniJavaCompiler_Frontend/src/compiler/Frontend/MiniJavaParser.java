@@ -1,5 +1,5 @@
-// Generated from C:\Users\Dickow\AppData\Local\Temp\MiniJava.g4 by ANTLR 4.1
-package compiler.Frontend;
+// Generated from C:\Users\Dickow\Google Drive\3.Semester\CompilerTeknik\Grammatik\MiniJava.g4 by ANTLR 4.1
+package compiler.Frontend; 
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -2263,6 +2263,8 @@ public class MiniJavaParser extends Parser {
 	}
 
 	public static class ExpressionMethodCallContext extends ParserRuleContext {
+		public ExpressionContext reqExpression;
+		public ExpressionContext optExpression;
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
@@ -2314,7 +2316,7 @@ public class MiniJavaParser extends Parser {
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 3) | (1L << 16) | (1L << 19) | (1L << 21) | (1L << 31) | (1L << 36) | (1L << IDENT) | (1L << INT) | (1L << STRING))) != 0)) {
 				{
-				setState(357); expression();
+				setState(357); ((ExpressionMethodCallContext)_localctx).reqExpression = expression();
 				setState(362);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -2322,7 +2324,7 @@ public class MiniJavaParser extends Parser {
 					{
 					{
 					setState(358); match(20);
-					setState(359); expression();
+					setState(359); ((ExpressionMethodCallContext)_localctx).optExpression = expression();
 					}
 					}
 					setState(364);

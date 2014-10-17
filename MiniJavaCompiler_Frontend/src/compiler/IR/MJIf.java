@@ -6,20 +6,9 @@ public class MJIf extends MJStatement {
 	private MJExpression condition;
 	private MJBlock ifblock;
 
-	public MJIf() {
-	}
-
 	public MJIf(MJExpression condition, MJBlock ifblock) {
 		this.condition = condition;
 		this.ifblock = ifblock;
-	}
-
-	public MJExpression getCondition() {
-		return this.condition;
-	}
-
-	public MJBlock getIfBlock() {
-		return this.ifblock;
 	}
 
 	public void prettyPrint(PrettyPrinter prepri) {
@@ -29,6 +18,14 @@ public class MJIf extends MJStatement {
 		this.ifblock.prettyPrint(prepri);
 		prepri.print(";");
 
+	}
+	
+	public MJExpression getCondition() {
+		return this.condition;
+	}
+
+	public MJBlock getIfBlock() {
+		return this.ifblock;
 	}
 
 }

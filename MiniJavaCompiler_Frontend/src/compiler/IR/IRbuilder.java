@@ -1,12 +1,13 @@
 package compiler.IR;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
-import compiler.Frontend.*;
+import compiler.Frontend.MiniJavaParser;
 import compiler.Frontend.MiniJavaParser.ExpressionArrayAccessContext;
 import compiler.Frontend.MiniJavaParser.ExpressionIdentifierContext;
 import compiler.Frontend.MiniJavaParser.ExpressionMethodCallContext;
@@ -14,13 +15,13 @@ import compiler.Frontend.MiniJavaParser.ExpressionNegationContext;
 import compiler.Frontend.MiniJavaParser.ExpressionNewIntArrayContext;
 import compiler.Frontend.MiniJavaParser.ExpressionNewObjectContext;
 import compiler.Frontend.MiniJavaParser.IdContext;
-import compiler.Frontend.MiniJavaParser.IdentifierContext;
 import compiler.Frontend.MiniJavaParser.StatementArrayAssignmentContext;
 import compiler.Frontend.MiniJavaParser.StatementBlockContext;
 import compiler.Frontend.MiniJavaParser.StatementIfContext;
 import compiler.Frontend.MiniJavaParser.StatementMethodCallContext;
 import compiler.Frontend.MiniJavaParser.StatementPrintContext;
 import compiler.Frontend.MiniJavaParser.StatementWhileContext;
+import compiler.Frontend.MiniJavaVisitor;
 
 public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 		MiniJavaVisitor<IR> {
@@ -508,20 +509,45 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 	// statementIf
 	//		: 'if' '(' condition = expression ')' ifblock = block ('else'  elseblock = block)?;
 	public IR visitStatementIf(StatementIfContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		MJExpression condition = visitExpression(ctx.condition); 
+		MJBlock ifblock = visitBlock(ctx.ifblock);
+		MJBlock elseblock = visitBlock(ctx.elseblock);
+		
+		if(elseblock != null) {
+			return new MJIfElse(condition, ifblock, elseblock);
+		}
+		else {
+			return new MJIf(condition, ifblock);
+		}
 	}
 
-	@Override
+	// StatementArrayAssignment
+	// statementArrayAssignment    : identifier '[' arrayexpression = expression ']'
+	// '=' identifierExpression = expression ';'; 
+
 	public IR visitStatementArrayAssignment(StatementArrayAssignmentContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		MJIdentifier identifier = visitIdentifier(ctx.identifier());
+		MJExpression arrayExpression = visitExpression(ctx.arrayexpression);
+		MJExpression identifierExpression = visitExpression(ctx.identifierExpression);
+		return new MJArrayAssign(identifier,arrayExpression,identifierExpression);
 	}
 
-	@Override
+	// expressionMethodCall      
+	// : (identifier '.')? 
+	// IDENT '(' (reqExpression = expression(',' optExpression = expression)* )? ')'; 
 	public IR visitExpressionMethodCall(ExpressionMethodCallContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		LinkedList<MJExpression> optExpressionList = new LinkedList<MJExpression>();
+		
+		MJIdentifier identifier = visitIdentifier(ctx.identifier());
+		MJExpression reqExpression = visitExpression(ctx.reqExpression);
+		
+		for (MiniJavaParser.ExpressionContext c : ctx.expression()) {
+			optExpressionList.add(visitExpression(c));
+		}
+		
+		
+		return new MJMethodCall(identifier,reqExpression,optExpressionList);
 	}
 
 }
