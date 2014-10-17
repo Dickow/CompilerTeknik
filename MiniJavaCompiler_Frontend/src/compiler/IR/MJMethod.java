@@ -9,16 +9,22 @@ public class MJMethod extends IR {
 	private MJType returnType;
 	private String name;
 	private LinkedList<MJVariable> parameters;
-	private MJBlock body;
+	private LinkedList<MJVariable> variables;
+	private LinkedList<MJStatement> statements;
+	private MJReturn returnCall;
 	private boolean isStatic;
 	private boolean isPublic;
 
 	public MJMethod(MJType returnType, String name, LinkedList<MJVariable> parList,
-			MJBlock b, boolean isStatic, boolean isPublic) {
+			LinkedList<MJVariable> vars, LinkedList<MJStatement> statements, 
+			MJReturn returnExpr, boolean isStatic, boolean isPublic) {
+		
 		this.returnType = returnType;
 		this.name = name;
 		this.parameters = parList;
-		this.body = b;
+		this.variables = vars;
+		this.statements = statements;
+		this.returnCall = returnExpr;
 		this.isStatic = isStatic;
 		this.isPublic = isPublic;
 	}
@@ -35,10 +41,19 @@ public class MJMethod extends IR {
 		return returnType;
 	}
 
-	public MJBlock getBody() {
-		return body;
+	public LinkedList<MJVariable> getVariables() {
+		return variables;
 	}
 
+	public LinkedList<MJStatement> getStatements() {
+		return statements;
+	}
+
+	public MJReturn getReturnCall() {
+		return returnCall;
+	}
+
+	
 	public boolean isStatic() {
 		return this.isStatic;
 	}
@@ -69,7 +84,17 @@ public class MJMethod extends IR {
 			v.prettyPrint(prepri);
 		}
 		prepri.println(")");
-		body.prettyPrint(prepri);
-		prepri.println("");
+		prepri.println("{");
+		prepri.in();
+		for (MJVariable v : this.variables) {
+			v.prettyPrint(prepri);
+			prepri.println(";");
+		}
+		for (MJStatement s : this.statements) {
+			s.prettyPrint(prepri);
+		}
+		returnCall.prettyPrint(prepri);
+		prepri.out();
+		prepri.println("}");
 	}
 }

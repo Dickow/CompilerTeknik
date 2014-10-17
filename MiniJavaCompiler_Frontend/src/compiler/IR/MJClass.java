@@ -45,10 +45,6 @@ public class MJClass extends IR {
 		return fieldList;
 	}
 
-	public void setSuperClass(MJType superClass) {
-		this.superClass = superClass;
-	}
-
 	public MJType getSuperClass() {
 		return superClass;
 	}
