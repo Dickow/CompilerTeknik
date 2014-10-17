@@ -2,7 +2,7 @@
 
 import compiler.PrettyPrinter;
 
-public class MJArray extends MJIdentifier {
+public class MJArray extends MJExpression {
 
 	private MJIdentifier array;
 	private MJExpression index;
