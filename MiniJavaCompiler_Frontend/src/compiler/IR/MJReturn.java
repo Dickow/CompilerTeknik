@@ -17,7 +17,7 @@ public class MJReturn extends MJStatement {
 	public void prettyPrint(PrettyPrinter prepri) {
 		prepri.print("return");
 
-		if (!(this.retExp instanceof MJNewObjectExpression)) {
+		if (!(this.retExp instanceof MJNewObjectExpression) && this.retExp != null) {
 			prepri.print(" ");
 			this.retExp.prettyPrint(prepri);
 		}

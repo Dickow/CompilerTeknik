@@ -9,6 +9,7 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 import compiler.Frontend.MiniJavaParser;
 import compiler.Frontend.MiniJavaParser.ExpressionArrayAccessContext;
+import compiler.Frontend.MiniJavaParser.ExpressionContext;
 import compiler.Frontend.MiniJavaParser.ExpressionIdentifierContext;
 import compiler.Frontend.MiniJavaParser.ExpressionMethodCallContext;
 import compiler.Frontend.MiniJavaParser.ExpressionNegationContext;
@@ -279,8 +280,12 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 	public MJStatement visitStatementReturn(
 			MiniJavaParser.StatementReturnContext ctx) {
 
-		MJExpression argument = visitExpression(ctx.argument);
-
+		ExpressionContext expression = ctx.argument;
+		
+		MJExpression argument = null;
+		if (expression != null)
+			argument = visitExpression(expression);
+				
 		return new MJReturn(argument);
 	}
 
