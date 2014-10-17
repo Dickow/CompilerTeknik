@@ -56,7 +56,7 @@ methodDeclaration
     ')' 
     '{' ( varDeclaration )* 
         ( statement )*
-        return  
+        returnCall 
     '}'
   ;
   
@@ -87,7 +87,7 @@ statementPrintln            : 'System.out.println' '(' argument=expression ')' '
 statementPrint              : 'System.out.print' '(' argument = expression ')' ';'; // New
 statementMethodCall         : expressionMethodCall;  // New
 
-return             : 'return' '(' (argument=expression)? ')' ';' ; // New
+returnCall             : 'return' '(' (argument=expression)? ')' ';' ; // New
 
 expression
   : head=level1 ( '&&' tail+=level1 )*
