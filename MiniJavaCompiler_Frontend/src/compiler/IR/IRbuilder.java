@@ -538,7 +538,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 	public IR visitExpressionMethodCall(ExpressionMethodCallContext ctx) {
 		
 		LinkedList<MJExpression> optExpressionList = new LinkedList<MJExpression>();
-		
+		String methodName = ctx.IDENT().getText();
 		MJIdentifier identifier = visitIdentifier(ctx.identifier());
 		MJExpression reqExpression = visitExpression(ctx.reqExpression);
 		
@@ -547,7 +547,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 		}
 		
 		
-		return new MJMethodCall(identifier,reqExpression,optExpressionList);
+		return new MJMethodCall(identifier,methodName,reqExpression,optExpressionList);
 	}
 
 }
