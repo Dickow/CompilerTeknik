@@ -205,6 +205,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 			statements.add(visitStatement(c));
 		}
 
+		// TODO indset navn på context når gramatik er opdateret
 		MJReturn returnCall = visitReturn(ctx.());
 
 
@@ -222,8 +223,6 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 	// voidtype: 'void' ;
 
 	public MJType visitProcType(MiniJavaParser.ProcTypeContext ctx) {
-		List<org.antlr.v4.runtime.tree.ParseTree> x = ctx.children;
-
 		return (MJType) visitChildren(ctx);
 	}
 
