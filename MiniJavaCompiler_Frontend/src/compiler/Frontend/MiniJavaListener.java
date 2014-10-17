@@ -1,5 +1,5 @@
-// Generated from C:\Users\Dickow\Google Drive\3.Semester\CompilerTeknik\Grammatik\MiniJava.g4 by ANTLR 4.1
-package compiler.Frontend; 
+// Generated from C:\Users\Dickow\git\CompilerTeknik\MiniJavaCompiler_Frontend\libs\MiniJava.g4 by ANTLR 4.1
+package compiler.Frontend;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -40,17 +40,6 @@ public interface MiniJavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMainClass(@NotNull MiniJavaParser.MainClassContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link MiniJavaParser#statementReturn}.
-	 * @param ctx the parse tree
-	 */
-	void enterStatementReturn(@NotNull MiniJavaParser.StatementReturnContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MiniJavaParser#statementReturn}.
-	 * @param ctx the parse tree
-	 */
-	void exitStatementReturn(@NotNull MiniJavaParser.StatementReturnContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link MiniJavaParser#expressionConstantFalse}.
@@ -447,6 +436,17 @@ public interface MiniJavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStatementArrayAssignment(@NotNull MiniJavaParser.StatementArrayAssignmentContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link MiniJavaParser#return}.
+	 * @param ctx the parse tree
+	 */
+	void enterReturn(@NotNull MiniJavaParser.ReturnContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiniJavaParser#return}.
+	 * @param ctx the parse tree
+	 */
+	void exitReturn(@NotNull MiniJavaParser.ReturnContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link MiniJavaParser#level3}.

@@ -1,5 +1,5 @@
-// Generated from C:\Users\Dickow\Google Drive\3.Semester\CompilerTeknik\Grammatik\MiniJava.g4 by ANTLR 4.1
-package compiler.Frontend; 
+// Generated from C:\Users\Dickow\git\CompilerTeknik\MiniJavaCompiler_Frontend\libs\MiniJava.g4 by ANTLR 4.1
+package compiler.Frontend;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -31,13 +31,6 @@ public interface MiniJavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMainClass(@NotNull MiniJavaParser.MainClassContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link MiniJavaParser#statementReturn}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitStatementReturn(@NotNull MiniJavaParser.StatementReturnContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link MiniJavaParser#expressionConstantFalse}.
@@ -290,6 +283,13 @@ public interface MiniJavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitStatementArrayAssignment(@NotNull MiniJavaParser.StatementArrayAssignmentContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link MiniJavaParser#return}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReturn(@NotNull MiniJavaParser.ReturnContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link MiniJavaParser#level3}.

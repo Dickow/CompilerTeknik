@@ -1,5 +1,5 @@
-// Generated from C:\Users\Dickow\Google Drive\3.Semester\CompilerTeknik\Grammatik\MiniJava.g4 by ANTLR 4.1
-package compiler.Frontend; 
+// Generated from C:\Users\Dickow\git\CompilerTeknik\MiniJavaCompiler_Frontend\libs\MiniJava.g4 by ANTLR 4.1
+package compiler.Frontend;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

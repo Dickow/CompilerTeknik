@@ -1,5 +1,5 @@
-// Generated from C:\Users\Dickow\Google Drive\3.Semester\CompilerTeknik\Grammatik\MiniJava.g4 by ANTLR 4.1
-package compiler.Frontend; 
+// Generated from C:\Users\Dickow\git\CompilerTeknik\MiniJavaCompiler_Frontend\libs\MiniJava.g4 by ANTLR 4.1
+package compiler.Frontend;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -49,19 +49,6 @@ public class MiniJavaBaseListener implements MiniJavaListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitMainClass(@NotNull MiniJavaParser.MainClassContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterStatementReturn(@NotNull MiniJavaParser.StatementReturnContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitStatementReturn(@NotNull MiniJavaParser.StatementReturnContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -530,6 +517,19 @@ public class MiniJavaBaseListener implements MiniJavaListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitStatementArrayAssignment(@NotNull MiniJavaParser.StatementArrayAssignmentContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterReturn(@NotNull MiniJavaParser.ReturnContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitReturn(@NotNull MiniJavaParser.ReturnContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

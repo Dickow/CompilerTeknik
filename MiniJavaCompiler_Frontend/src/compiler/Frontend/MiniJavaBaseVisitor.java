@@ -1,5 +1,5 @@
-// Generated from C:\Users\Dickow\Google Drive\3.Semester\CompilerTeknik\Grammatik\MiniJava.g4 by ANTLR 4.1
-package compiler.Frontend; 
+// Generated from C:\Users\Dickow\git\CompilerTeknik\MiniJavaCompiler_Frontend\libs\MiniJava.g4 by ANTLR 4.1
+package compiler.Frontend;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -35,14 +35,6 @@ public class MiniJavaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implemen
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
 	@Override public T visitMainClass(@NotNull MiniJavaParser.MainClassContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
-	@Override public T visitStatementReturn(@NotNull MiniJavaParser.StatementReturnContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -331,6 +323,14 @@ public class MiniJavaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implemen
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
 	@Override public T visitStatementArrayAssignment(@NotNull MiniJavaParser.StatementArrayAssignmentContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.
+	 */
+	@Override public T visitReturn(@NotNull MiniJavaParser.ReturnContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}

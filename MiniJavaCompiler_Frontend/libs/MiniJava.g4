@@ -56,7 +56,7 @@ methodDeclaration
     ')' 
     '{' ( varDeclaration )* 
         ( statement )*
-        statementReturn
+        return  
     '}'
   ;
   
