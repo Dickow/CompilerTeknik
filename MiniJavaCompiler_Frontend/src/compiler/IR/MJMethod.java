@@ -15,10 +15,11 @@ public class MJMethod extends IR {
 	private boolean isStatic;
 	private boolean isPublic;
 
-	public MJMethod(MJType returnType, String name, LinkedList<MJVariable> parList,
-			LinkedList<MJVariable> vars, LinkedList<MJStatement> statements, 
-			MJReturn returnExpr, boolean isStatic, boolean isPublic) {
-		
+	public MJMethod(MJType returnType, String name,
+			LinkedList<MJVariable> parList, LinkedList<MJVariable> vars,
+			LinkedList<MJStatement> statements, MJReturn returnExpr,
+			boolean isStatic, boolean isPublic) {
+
 		this.returnType = returnType;
 		this.name = name;
 		this.parameters = parList;
@@ -53,7 +54,6 @@ public class MJMethod extends IR {
 		return returnCall;
 	}
 
-	
 	public boolean isStatic() {
 		return this.isStatic;
 	}
@@ -72,7 +72,7 @@ public class MJMethod extends IR {
 
 		this.returnType.prettyPrint(prepri);
 		prepri.print(" ");
-		
+
 		prepri.print(this.name + "(");
 		boolean first = true;
 		for (MJVariable v : this.parameters) {
@@ -93,7 +93,9 @@ public class MJMethod extends IR {
 		for (MJStatement s : this.statements) {
 			s.prettyPrint(prepri);
 		}
-		returnCall.prettyPrint(prepri);
+		if (returnCall != null) {
+			returnCall.prettyPrint(prepri);
+		}
 		prepri.out();
 		prepri.println("}");
 	}
