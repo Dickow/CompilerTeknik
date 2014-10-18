@@ -26,6 +26,14 @@ public class MiniJavaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implemen
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
+	@Override public T visitReturnCall(@NotNull MiniJavaParser.ReturnCallContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.
+	 */
 	@Override public T visitStatementAssign(@NotNull MiniJavaParser.StatementAssignContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -323,14 +331,6 @@ public class MiniJavaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implemen
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
 	@Override public T visitStatementArrayAssignment(@NotNull MiniJavaParser.StatementArrayAssignmentContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
-	@Override public T visitReturn(@NotNull MiniJavaParser.ReturnContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}

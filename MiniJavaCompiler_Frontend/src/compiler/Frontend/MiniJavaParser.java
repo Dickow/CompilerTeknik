@@ -36,7 +36,7 @@ public class MiniJavaParser extends Parser {
 		RULE_typeVoid = 12, RULE_statement = 13, RULE_statementBlock = 14, RULE_statementIf = 15, 
 		RULE_statementWhile = 16, RULE_statementAssign = 17, RULE_statementArrayAssignment = 18, 
 		RULE_statementPrintln = 19, RULE_statementPrint = 20, RULE_statementMethodCall = 21, 
-		RULE_return = 22, RULE_expression = 23, RULE_level1 = 24, RULE_level2 = 25, 
+		RULE_returnCall = 22, RULE_expression = 23, RULE_level1 = 24, RULE_level2 = 25, 
 		RULE_level3 = 26, RULE_level4 = 27, RULE_level5 = 28, RULE_expressionUnaryMinus = 29, 
 		RULE_expressionNegation = 30, RULE_expressionNewIntArray = 31, RULE_expressionNewObject = 32, 
 		RULE_expressionIdentifier = 33, RULE_expressionArrayAccess = 34, RULE_expressionMethodCall = 35, 
@@ -48,7 +48,7 @@ public class MiniJavaParser extends Parser {
 		"variable", "type", "typeBoolean", "typeInt", "typeClass", "methodDeclaration", 
 		"procType", "typeVoid", "statement", "statementBlock", "statementIf", 
 		"statementWhile", "statementAssign", "statementArrayAssignment", "statementPrintln", 
-		"statementPrint", "statementMethodCall", "return", "expression", "level1", 
+		"statementPrint", "statementMethodCall", "returnCall", "expression", "level1", 
 		"level2", "level3", "level4", "level5", "expressionUnaryMinus", "expressionNegation", 
 		"expressionNewIntArray", "expressionNewObject", "expressionIdentifier", 
 		"expressionArrayAccess", "expressionMethodCall", "expressionParentheses", 
@@ -665,6 +665,9 @@ public class MiniJavaParser extends Parser {
 		public Token isPublic;
 		public Token isStatic;
 		public Token methodName;
+		public ReturnCallContext returnCall() {
+			return getRuleContext(ReturnCallContext.class,0);
+		}
 		public List<VarDeclarationContext> varDeclaration() {
 			return getRuleContexts(VarDeclarationContext.class);
 		}
@@ -679,9 +682,6 @@ public class MiniJavaParser extends Parser {
 		}
 		public ProcTypeContext procType() {
 			return getRuleContext(ProcTypeContext.class,0);
-		}
-		public ReturnContext return() {
-			return getRuleContext(ReturnContext.class,0);
 		}
 		public TerminalNode IDENT() { return getToken(MiniJavaParser.IDENT, 0); }
 		public List<VariableContext> variable() {
@@ -788,7 +788,7 @@ public class MiniJavaParser extends Parser {
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(199); return();
+			setState(199); returnCall();
 			setState(200); match(12);
 			}
 		}
@@ -1430,33 +1430,33 @@ public class MiniJavaParser extends Parser {
 		return _localctx;
 	}
 
-	public static class ReturnContext extends ParserRuleContext {
+	public static class ReturnCallContext extends ParserRuleContext {
 		public ExpressionContext argument;
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public ReturnContext(ParserRuleContext parent, int invokingState) {
+		public ReturnCallContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_return; }
+		@Override public int getRuleIndex() { return RULE_returnCall; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof MiniJavaListener ) ((MiniJavaListener)listener).enterReturn(this);
+			if ( listener instanceof MiniJavaListener ) ((MiniJavaListener)listener).enterReturnCall(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof MiniJavaListener ) ((MiniJavaListener)listener).exitReturn(this);
+			if ( listener instanceof MiniJavaListener ) ((MiniJavaListener)listener).exitReturnCall(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof MiniJavaVisitor ) return ((MiniJavaVisitor<? extends T>)visitor).visitReturn(this);
+			if ( visitor instanceof MiniJavaVisitor ) return ((MiniJavaVisitor<? extends T>)visitor).visitReturnCall(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final ReturnContext return() throws RecognitionException {
-		ReturnContext _localctx = new ReturnContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_return);
+	public final ReturnCallContext returnCall() throws RecognitionException {
+		ReturnCallContext _localctx = new ReturnCallContext(_ctx, getState());
+		enterRule(_localctx, 44, RULE_returnCall);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1467,7 +1467,7 @@ public class MiniJavaParser extends Parser {
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 3) | (1L << 16) | (1L << 19) | (1L << 21) | (1L << 31) | (1L << 36) | (1L << IDENT) | (1L << INT) | (1L << STRING))) != 0)) {
 				{
-				setState(264); ((ReturnContext)_localctx).argument = expression();
+				setState(264); ((ReturnCallContext)_localctx).argument = expression();
 				}
 			}
 

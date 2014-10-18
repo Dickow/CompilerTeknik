@@ -29,6 +29,19 @@ public class MiniJavaBaseListener implements MiniJavaListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterReturnCall(@NotNull MiniJavaParser.ReturnCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitReturnCall(@NotNull MiniJavaParser.ReturnCallContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterStatementAssign(@NotNull MiniJavaParser.StatementAssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -517,19 +530,6 @@ public class MiniJavaBaseListener implements MiniJavaListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitStatementArrayAssignment(@NotNull MiniJavaParser.StatementArrayAssignmentContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterReturn(@NotNull MiniJavaParser.ReturnContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitReturn(@NotNull MiniJavaParser.ReturnContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -16,6 +16,7 @@ import compiler.Frontend.MiniJavaParser.ExpressionNegationContext;
 import compiler.Frontend.MiniJavaParser.ExpressionNewIntArrayContext;
 import compiler.Frontend.MiniJavaParser.ExpressionNewObjectContext;
 import compiler.Frontend.MiniJavaParser.IdContext;
+import compiler.Frontend.MiniJavaParser.ReturnCallContext;
 import compiler.Frontend.MiniJavaParser.StatementArrayAssignmentContext;
 import compiler.Frontend.MiniJavaParser.StatementBlockContext;
 import compiler.Frontend.MiniJavaParser.StatementIfContext;
@@ -206,8 +207,8 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 		}
 
 		// TODO indset navn på context når gramatik er opdateret
-		MJReturn returnCall = visitReturn(ctx.());
-
+		MJReturn returnCall = (MJReturn) visitReturnCall(ctx.returnCall());
+		
 
 		MJMethod method = new MJMethod(returnType, methodName, parameterList,
 				variableDeclarations, statements, returnCall, isPublic, isStatic);
@@ -261,7 +262,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 	}
 
 	public MJStatement visitReturn(
-			MiniJavaParser.ReturnContext ctx) {
+			MiniJavaParser.ReturnCallContext ctx) {
 
 		ExpressionContext expression = ctx.argument;
 		
@@ -536,6 +537,12 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements
 		
 		
 		return new MJMethodCall(identifier,methodName,reqExpression,optExpressionList);
+	}
+
+	@Override
+	public IR visitReturnCall(ReturnCallContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
