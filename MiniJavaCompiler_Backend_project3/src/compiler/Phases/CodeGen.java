@@ -125,11 +125,11 @@ public class CodeGen extends IRElementVisitorWithArgument<CODE> {
 		code.pop(CODE.TMP0);
 		code.add(new LC3BRZ(ifElseLabel));
 		visitStatement(e.getIfBlock(), code);
-		code.add(new LC3JSR(ifEndLabel));
+		code.add(new LC3BR(ifEndLabel));
 		code.add(ifElseLabel);
 		visitStatement(e.getElseBlock(), code);
 		// else block is done so we jump out
-		code.add(new LC3JSR(ifEndLabel));
+		code.add(new LC3BR(ifEndLabel));
 		code.add(ifEndLabel);
 		code.comment(" IF/ELSE END ");
 
@@ -150,8 +150,7 @@ public class CodeGen extends IRElementVisitorWithArgument<CODE> {
 		code.add(new LC3BRZ(whileEndLabel));
 		// if it was false jump to endWhile, else continue with the whileBlock
 		visitStatement(e.getBlock(), code);
-		code.add(new LC3JSR(whileBlockLabel));
-
+		code.add(new LC3BR(whileBlockLabel));
 		// ending the whileLoop
 		code.add(whileEndLabel);
 
@@ -520,8 +519,8 @@ public class CodeGen extends IRElementVisitorWithArgument<CODE> {
 		code.pop(CODE.TMP0);
 		code.add(new LC3BRNP(trueValue));
 		// negate to true if it was false
-		code.add(new LC3AND(CODE.TMP0, CODE.TMP0, CODE.TMP0));
-		code.add(new LC3JSR(negateEndLabel));
+		code.add(new LC3ADD(CODE.TMP0, CODE.TMP0, 1));
+		code.add(new LC3BR(negateEndLabel));
 
 		// negate to false if it was true
 		code.add(trueValue);
