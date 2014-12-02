@@ -464,9 +464,14 @@ public class CodeGen extends IRElementVisitorWithArgument<CODE> {
 		code.commentline("RHS");
 		visitExpression(e.getRhs(), code);
 
-		code.commentline("add Integers");
+		code.commentline("subtract Integers");
 		code.pop2(CODE.TMP0, CODE.TMP1);
-
+		
+		// 2's compliment of TMP1 and add 1 to it to get the minus value
+		code.add(new LC3NOT(CODE.TMP1, CODE.TMP1));
+		code.add(new LC3ADD(CODE.TMP1, CODE.TMP1, 1));
+		
+		// subtract the 2 integers
 		code.add(new LC3ADD(CODE.TMP0, CODE.TMP0, CODE.TMP1));
 		code.push(CODE.TMP0);
 
